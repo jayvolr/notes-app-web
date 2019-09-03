@@ -5,11 +5,16 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "NODE_ENV=DEV vue-cli-service serve & sleep 5 && NODE_ENV=DEV electron electron.js",
+    "electron-dev": "NODE_ENV=DEV electron electron.js",
+    "electron": "electron electron.js"
   },
   "dependencies": {
+    "electron": "^6.0.7",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
+    "vue-eva-icons": "^1.1.1",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },
