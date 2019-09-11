@@ -8,8 +8,8 @@
       <SearchBox />
       <Divider />
       <div class="v-nav__tabs">
-        <div class="v-nav__tab">
-          <Icon name="notes" size="26" color="white-2"/>
+        <div class="v-nav__tab v-nav__tab--active">
+          <Icon name="notes" size="26" color="white"/>
           Notes
         </div>
         <Divider label="tags" />
@@ -68,7 +68,10 @@ export default {
 .nav__container {
   display: flex;
   flex-direction: column;
-  position: relative;
+  width: 316px;
+  float: left;
+  left: 0;
+  top: 22px;
   transition: width 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
 
   .menu-button {
@@ -117,6 +120,15 @@ export default {
         &:hover {
           background: $black-2;
           transition: all 200ms;
+        }
+
+        &--active {
+          background: $blue-overlay;
+          color: $white;
+
+          &:hover {
+            background: $blue-overlay-2;
+          }
         }
       }
 

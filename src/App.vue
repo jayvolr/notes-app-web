@@ -1,8 +1,6 @@
 <template>
   <div id="app-mount">
-    <div class="title-bar" @dblclick="maximize">
-      <span class="title-bar__title">Notes</span>
-    </div>
+    <div class="title-bar" @dblclick="maximize"></div>
     <Nav />
     <router-view/>
   </div>
@@ -37,26 +35,17 @@ body {
   background: $black;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
   position: absolute;
-  display: flex;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   user-select: none;
-  min-width: 500px;
-  min-height: 700px;
 }
 
 .title-bar {
   text-align: center;
   height: 22px;
-  width: -webkit-fill-available;
-  background: #31343c;
+  width: 100%;
+  background: $black-2;
   padding-left: 70px;
   -webkit-app-region: drag;
-
-  &__title {
-    font-size: 12px;
-    font-weight: 500;
-  }
 }
 </style>

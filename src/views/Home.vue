@@ -1,25 +1,36 @@
 <template>
   <div class="home">
-    <h1>A note</h1>
+    <NoteCard :note="note" v-for="note in notes" :key="note.id" />
+    <NoteCard :note="note" v-for="note in notes" :key="note.id" />
+    <NoteCard :note="note" v-for="note in notes" :key="note.id" />
   </div>
 </template>
 
 <script>
-
+import NoteCard from '@/components/NoteCard';
 
 export default {
   name: 'home',
   components: {
-
+    NoteCard,
+  },
+  computed: {
+    notes() {
+      return this.$store.state.notes
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
   .home {
-    flex-grow: 1;
-    padding: 45px 100px;
-    transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    padding: 30px;
     position: relative;
+    float: left;
+    width: calc(100% - 376px);
+    display: flex;
+    height: calc(100% - 82px);
+    flex-flow: column wrap;
+    align-content: center;
   }
 </style>

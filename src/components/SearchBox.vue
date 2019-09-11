@@ -69,18 +69,18 @@ export default {
     height: -webkit-fill-available;
     position: absolute;
     border: none;
-    color: $black;
+    color: $white-2;
     font-size: 14px;
 
     &:focus {
       outline: none;
+      color: $black;
     }
 
     &::placeholder {
       font-weight: 500;
       font-size: 14px;
       position: relative;
-      top: 1px;
     }
   }
 </style>
