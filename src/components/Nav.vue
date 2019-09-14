@@ -1,36 +1,36 @@
 <template>
-  <div class="nav__container" :class="{ 'nav__container--closed': !navIsOpen }">
-    <div @click="toggleNav" class="menu-button">
+  <div>
+    <div @click="toggleNav" class="nav-button">
       <Icon name="menu" size="24" />
     </div>
 
-    <div class="v-nav" :class="{ 'v-nav--closed': !navIsOpen }">
+    <div class="nav" :class="{ 'nav--closed': !navIsOpen }">
       <SearchBox />
       <Divider />
-      <div class="v-nav__tabs">
-        <div class="v-nav__tab v-nav__tab--active">
+      <div class="nav__tabs">
+        <div class="nav__tab nav__tab--active">
           <Icon name="notes" size="26" color="white"/>
           Notes
         </div>
         <Divider label="tags" />
-        <div class="v-nav__tab">
+        <div class="nav__tab">
           <Icon name="tag" size="26" color="white-2"/>
           Personal
         </div>
-        <div class="v-nav__tab">
+        <div class="nav__tab">
           <Icon name="tag" size="26" color="white-2"/>
           Work
         </div>
-        <div class="v-nav__tab">
+        <div class="nav__tab">
           <Icon name="tag" size="26" color="white-2"/>
           Dev
         </div>
         <Divider />
-        <div class="v-nav__tab">
+        <div class="nav__tab">
           <Icon name="archive" size="26" color="white-2"/>
           Archive
         </div>
-        <div class="v-nav__tab">
+        <div class="nav__tab">
           <Icon name="trash" size="26" color="white-2"/>
           Trash
         </div>
@@ -51,100 +51,89 @@ export default {
     SearchBox,
     Divider,
   },
-  data() {
-    return {
-      navIsOpen: true,
-    }
+  computed: {
+    navIsOpen() {
+      return this.$store.state.navIsOpen;
+    },
   },
   methods: {
     toggleNav() {
-      this.navIsOpen = !this.navIsOpen;
+      this.$store.commit('toggleNav');
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.nav__container {
-  display: flex;
-  flex-direction: column;
-  width: 316px;
-  float: left;
-  left: 0;
-  top: 22px;
-  transition: width 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+.nav-button {
+  position: fixed;
+  left: 5px;
+  top: 25px;
+  padding: 12px;
+  margin: 4px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
 
-  .menu-button {
-    padding: 12px;
-    margin: 4px;
-    height: 24px;
-    border-radius: 50%;
-    cursor: pointer;
-    align-self: flex-start;
-  }
-
-  .menu-button:hover {
+  &:hover {
     background: $black-2;
-  }
-
-  .v-nav {
-    height: -webkit-fill-available;
-    width: 300px;
-    padding: 8px;
-    background: $black;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
-
-    &__tabs {
-      font-weight: 500;
-      width: -webkit-fill-available;
-      position: relative;
-      color: $white-2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      .v-nav__tab {
-        display: flex;
-        align-items: center;
-        padding: 14px;
-        border-radius: 10px;
-        width: calc(100% - 13px);
-        position: relative;
-        left: -15px;
-        cursor: pointer;
-
-        &:hover {
-          background: $black-2;
-          transition: all 200ms;
-        }
-
-        &--active {
-          background: $blue-overlay;
-          color: $white;
-
-          &:hover {
-            background: $blue-overlay-2;
-          }
-        }
-      }
-
-      .icon {
-        margin-right: 22px;
-        margin-left: 9px;
-      }
-    }
-  }
-
-  .v-nav--closed {
-    transform: translateX(-316px); 
   }
 }
 
-.nav__container--closed {
-  width: 56px;
+.nav {
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  top: 80px;
+  width: 300px;
+  padding: 8px;
+  align-items: center;
+  position: fixed;
+  background: transparent;
+
+  &__tabs {
+    font-weight: 500;
+    width: -webkit-fill-available;
+    position: relative;
+    color: $white-2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .nav__tab {
+      display: flex;
+      align-items: center;
+      padding: 14px;
+      border-radius: 10px;
+      width: calc(100% - 13px);
+      position: relative;
+      left: -15px;
+      cursor: pointer;
+
+      &:hover {
+        background: $black-2;
+        transition: all 200ms;
+      }
+
+      &--active {
+        background: $blue-overlay;
+        color: $white;
+
+        &:hover {
+          background: $blue-overlay-2;
+        }
+      }
+    }
+
+    .icon {
+      margin-right: 22px;
+      margin-left: 9px;
+    }
+  }
+}
+
+.nav--closed {
+  transform: translateX(-316px); 
 }
 </style>

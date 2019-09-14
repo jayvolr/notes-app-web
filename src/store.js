@@ -96,9 +96,12 @@ export default new Vuex.Store({
       "creation_date": "1554980069",
       "edited_date": "1538525743"
     }],
+    navIsOpen: true,
   },
   mutations: {
-
+    toggleNav(state) {
+      state.navIsOpen = !state.navIsOpen;
+    }
   },
   actions: {
 

@@ -2,7 +2,9 @@
   <div id="app-mount">
     <div class="title-bar" @dblclick="maximize"></div>
     <Nav />
-    <router-view/>
+    <div class="view-container" :class="{ 'view-container--full': !navIsOpen }">
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -13,6 +15,11 @@ const { BrowserWindow } = require('electron').remote
 export default {
   components: {
     Nav,
+  },
+  computed: {
+    navIsOpen() {
+      return this.$store.state.navIsOpen;
+    },
   },
   methods: {
     maximize() {
@@ -26,7 +33,21 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.452);
+    border-radius: 10px;
+  }
 }
 
 #app-mount {
@@ -46,6 +67,16 @@ body {
   width: 100%;
   background: $black-2;
   padding-left: 70px;
+  position: fixed;
   -webkit-app-region: drag;
+}
+
+.view-container {
+  margin: 22px 0 0 316px;
+  transition: margin 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+
+  &--full {
+    margin-left: 0;
+  }
 }
 </style>

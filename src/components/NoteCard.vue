@@ -31,6 +31,7 @@ export default {
     border: 1px solid $black-2;
     transition: border 100ms;
     cursor: pointer;
+    position: absolute;
 
     &:hover {
       border-color: $gray;
