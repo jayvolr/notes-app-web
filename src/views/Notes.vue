@@ -1,8 +1,6 @@
 <template>
   <div class="notes">
-    <NoteCard :note="note" v-for="note in notes" :key="note.id" />
-    <NoteCard :note="note" v-for="note in notes" :key="note.title" />
-    <NoteCard :note="note" v-for="note in notes" :key="note.body" />
+    <NoteCard :note="note" :id="note.id" :data-note-id="note.id" v-for="note in notes" :key="note.id" />
   </div>
 </template>
 

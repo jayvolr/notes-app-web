@@ -37,7 +37,7 @@ body {
 }
 
 #app-mount {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Roboto, Arial, sans-serif;
   color: $white;
   background: $black;
   height: 100vh;
