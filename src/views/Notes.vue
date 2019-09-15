@@ -24,8 +24,10 @@ export default {
 
 <style lang="scss" scoped>
   .notes {
-    padding: 30px;
-    max-width: 1200px;
     margin: auto;
+    padding: 30px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
   }
 </style>

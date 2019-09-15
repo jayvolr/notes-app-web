@@ -25,13 +25,12 @@ export default {
     font-size: .875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    margin: 10px;
+    margin: 7px;
     padding: 10px 20px;
     flex-flow: column nowrap;
-    border: 1px solid $black-2;
+    border: 1px solid $black-3;
     transition: border 100ms;
     cursor: pointer;
-    position: absolute;
 
     &:hover {
       border-color: $gray;

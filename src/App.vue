@@ -33,21 +33,7 @@ export default {
 <style lang="scss">
 body {
   margin: 0;
-  overflow-x: hidden;
-
-  &::-webkit-scrollbar {
-    height: 5px;
-    width: 5px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.452);
-    border-radius: 10px;
-  }
+  overflow: hidden;
 }
 
 #app-mount {
@@ -74,9 +60,29 @@ body {
 .view-container {
   margin: 22px 0 0 316px;
   transition: margin 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+  height: calc(100% - 22px);
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   &--full {
     margin-left: 0;
+  }
+}
+
+* {
+  &::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.23);
+    // border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-corner, &::-webkit-resizer {
+    background: transparent;
   }
 }
 </style>

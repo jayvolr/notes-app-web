@@ -15,7 +15,7 @@ export default {
 <style lang="scss" scoped>
   .divider {
     height: 1px;
-    background: $accent-gray;
+    background: $black-2;
     margin: 25px 0;
     width: calc(100% + 16px);
     position: relative;

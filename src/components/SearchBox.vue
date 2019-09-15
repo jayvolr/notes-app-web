@@ -40,7 +40,7 @@ export default {
     width: -webkit-fill-available;
     background: $black-2;
     border-radius: 7px;
-    border: 1px solid $accent-gray;
+    border: 1px solid $black-3;
     height: 40px;
     padding-left: 12px;
     display: flex;

@@ -67,6 +67,6 @@ export default {
   }
 
   .accent-gray {
-    fill: $accent-gray;
+    fill: $black-3;
   }
 </style>
