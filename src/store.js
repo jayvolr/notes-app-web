@@ -15,15 +15,6 @@ export default new Vuex.Store({
       "creation_date": "1549926106",
       "edited_date": "1564486868"
     }, {
-      "id": 2,
-      "title": null,
-      "body": null,
-      "tags": [
-        "Aquamarine"
-      ],
-      "creation_date": "1541664745",
-      "edited_date": "1547148652"
-    }, {
       "id": 3,
       "title": "eget semper rutrum nulla nunc purus phasellus in felis donec",
       "body": "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
@@ -77,15 +68,6 @@ export default new Vuex.Store({
       ],
       "creation_date": "1542150079",
       "edited_date": "1565360528"
-    }, {
-      "id": 9,
-      "title": null,
-      "body": null,
-      "tags": [
-        "Puce"
-      ],
-      "creation_date": "1562056368",
-      "edited_date": "1554656317"
     }, {
       "id": 10,
       "title": "mi pede malesuada in imperdiet et",

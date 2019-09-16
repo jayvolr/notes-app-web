@@ -24,4 +24,5 @@ app.on('ready', () => {
     }
   })
   window.loadURL(url)
+  BrowserWindow.addDevToolsExtension('/Users/jlove/Library/Application Support/Google/Chrome/Default/Extensions/nhdogjmejiglipccpnnnanhbledajbpd/5.1.1_0')
 })

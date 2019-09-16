@@ -1,5 +1,5 @@
 <template>
-  <div v-if="note.body || note.title" :class="`note-card note-card--${id}`" @click="position">
+  <div :class="`note-card note-card--${id}`" :style="style" @click="click">
     <div class="note-card__title">{{ note.title }}</div>
     <div class="note-card__body">{{ note.body }}</div>
   </div>
@@ -8,62 +8,81 @@
 <script>
 export default {
   name: 'NoteCard',
-  props: ['note', 'id'],
+  props: ['note', 'id', 'rowSize'],
   data() {
     return {
-      translateX: 0,
-      translateY: 0,
+      noteElem: null,
+      recompute: 0,
+      noteWidth: 240,
+      margin: 14
     }
   },
-  methods: {
-    position(e) {
-      console.log('helo'); //eslint-disable-line
-      const thisNote = document.querySelector(`.note-card--${this.id}`);
-      if (!thisNote) return;
-
-      if (e && e.altKey) {
-        debugger; //eslint-disable-line
-      }
-
-      const noteAbove = this.getNoteAbove(thisNote);
-      if (!noteAbove) {
-        this.translateX = 0;
-        this.translateY = 0;
-        thisNote.style.transform = '';
-        return;
-      }
-
-      this.translateX += (thisNote.getBoundingClientRect().x - noteAbove.getBoundingClientRect().x);
-      this.translateY += ((thisNote.getBoundingClientRect().top - noteAbove.getBoundingClientRect().bottom) - 14);
-      // if (this.translateX < 1) this.translateX = 0;
-      // if (this.translateY < 1) this.translateY = 0;
-
-      thisNote.style.transform = `translate(-${this.translateX}px, -${this.translateY}px)`;
+  computed: {
+    translateX() {
+      this.recompute;
+      if (this.posInRow === 1 || !this.noteElem) return 0;
+      return this.noteWidth * (this.posInRow - 1) + this.margin*(this.posInRow - 1);
     },
-    getNoteAbove(thisNote) {
-      const notesContainer = thisNote.parentElement;
-      const notesPerRow = Math.floor(notesContainer.clientWidth / thisNote.clientWidth);
-
-      let result = thisNote;
-      for (let i = 0; i < notesPerRow; i++) {
+    translateY() {
+      this.recompute;
+      if (this.whichRow === 1 || !this.noteAbove) return 0;
+      return this.noteAbove.clientHeight + this.margin;
+    },
+    noteIndex() {
+      this.recompute;
+      let i = 1;
+      let elem = this.noteElem;
+      if (!elem) return null;
+      while ((elem = elem.previousElementSibling) != null) ++i;
+      return i;
+    },
+    whichRow() {
+      this.recompute;
+      return Math.ceil(this.noteIndex / this.rowSize);
+    },
+    posInRow() {
+      this.recompute;
+      let i = this.noteIndex;
+      while (i > this.rowSize) i -= this.rowSize;
+      return i;
+    },
+    style() {
+      this.recompute;
+      return `transform: translate(${this.translateX}px, ${this.translateY}px); width: ${this.noteWidth - 42}px`;
+      // return '';
+    },
+    noteAbove() {
+      this.recompute;
+      let result = this.noteElem;
+      for (let i = 0; i < this.rowSize; i++) {
         if (!result) break;
         result = result.previousElementSibling;
       }
-
       return result;
+    },
+  },
+  methods: {
+    click() {
+      console.log(this.noteAbove); //eslint-disable-line
     }
   },
   mounted() {
-    this.position();
-    document.querySelector('.view-container').addEventListener('transitionend', this.position);
-  },
+    this.$nextTick(() => {
+      this.noteElem = this.$el;
+      const viewContainer = document.querySelector('.view-container');
+      viewContainer.addEventListener('transitionend', () => {
+        console.log('forcing recompute'); //eslint-disable-line
+        this.recompute++;
+      });
+    });
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .note-card {
     display: flex;
-    width: 250px;
+    position: absolute;
     height: fit-content;
     background: $black-2;
     border-radius: 10px;
