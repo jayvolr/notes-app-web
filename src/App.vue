@@ -1,6 +1,5 @@
 <template>
   <div id="app-mount">
-    <div class="title-bar" @dblclick="maximize"></div>
     <Nav />
     <div class="view-container" :class="{ 'view-container--full': !navIsOpen }">
       <router-view/>
@@ -10,7 +9,6 @@
 
 <script>
 import Nav from "@/components/Nav";
-const { BrowserWindow } = require('electron').remote
 
 export default {
   components: {
@@ -21,12 +19,6 @@ export default {
       return this.$store.state.navIsOpen;
     },
   },
-  methods: {
-    maximize() {
-      const window = BrowserWindow.getFocusedWindow();
-      window.isMaximized() ? window.unmaximize() : window.maximize();
-    },
-  }
 }
 </script>
 
@@ -47,18 +39,8 @@ body {
   user-select: none;
 }
 
-.title-bar {
-  text-align: center;
-  height: 22px;
-  width: 100%;
-  background: $black-2;
-  padding-left: 70px;
-  position: fixed;
-  -webkit-app-region: drag;
-}
-
 .view-container {
-  margin: 22px 0 0 316px;
+  margin-left: 316px;
   transition: margin 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
   height: calc(100% - 22px);
   overflow-y: scroll;
