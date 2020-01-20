@@ -68,7 +68,7 @@ export default {
 .nav-button {
   position: fixed;
   left: 5px;
-  top: 25px;
+  top: 5px;
   padding: 12px;
   margin: 4px;
   height: 24px;
@@ -85,7 +85,7 @@ export default {
   flex-direction: column;
   left: 0;
   transition: transform 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  top: 80px;
+  top: 60px;
   width: 300px;
   padding: 8px;
   align-items: center;
@@ -113,7 +113,7 @@ export default {
 
       &:hover {
         background: $black-2;
-        transition: all 200ms;
+        // transition: all 100ms;
       }
 
       &--active {

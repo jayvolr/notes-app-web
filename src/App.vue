@@ -42,7 +42,7 @@ body {
 .view-container {
   margin-left: 316px;
   transition: margin 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
-  height: calc(100% - 22px);
+  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
 
