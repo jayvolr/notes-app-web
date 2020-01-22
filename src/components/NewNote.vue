@@ -1,6 +1,6 @@
 <template>
   <router-link class="NewNote-button" to="/compose">
-    <Icon name="notes" :color="iconFill" size="30" />
+    <Icon name="plus" :color="iconFill" size="40" />
   </router-link>
 </template>
 
@@ -43,7 +43,7 @@ export default {
     }
 
     .icon {
-      top: 14px;
+      top: 10px;
     }
   }
 </style>
