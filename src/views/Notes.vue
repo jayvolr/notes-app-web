@@ -37,19 +37,21 @@ export default {
     left() {
       if (!this.notesElem) return null;
       const leftoverSpace = (this.notesElem.clientWidth / (this.noteWidth + 14)) - this.rowSize;
-      const left = ((this.noteWidth + 14) * leftoverSpace) / 2;
-      return left;
-      // return '';
+      return ((this.noteWidth + 14) * leftoverSpace) / 2;
     },
   },
   mounted() {
     this.$nextTick(() => {
       this.notesElem = this.$refs.notes;
       this.viewElem = this.$el.parentElement;
-      this.viewElem.addEventListener('transitionend', () => {
+
+      const forceRecompute = () => {
         console.log('forcing notes recompute'); //eslint-disable-line
         this.recompute++;
-      });
+      }
+
+      this.viewElem.addEventListener('transitionend', forceRecompute);
+      window.onresize = forceRecompute;
     });
   }
 }
