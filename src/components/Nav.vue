@@ -4,14 +4,18 @@
       <Icon name="menu" size="24" />
     </div>
 
+    <router-link to="/">
+      <img class="mixnote-logo" src="/mixnote_white.png" alt="Mixnote Logo">
+    </router-link>
+
     <div class="nav" :class="{ 'nav--closed': !navIsOpen }">
       <SearchBox />
       <Divider />
       <div class="nav__tabs">
-        <div class="nav__tab nav__tab--active">
+        <router-link class="nav__tab nav__tab--active" to="/">
           <Icon name="notes" size="26" color="white"/>
           Notes
-        </div>
+        </router-link>
         <Divider label="tags" />
         <div class="nav__tab">
           <Icon name="tag" size="26" color="white-2"/>
@@ -74,10 +78,19 @@ export default {
   height: 24px;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 2;
 
   &:hover {
     background: $black-2;
   }
+}
+
+.mixnote-logo {
+  height: 30px;
+  position: fixed;
+  left: 68px;
+  top: 15px;
+  z-index: 3;
 }
 
 .nav {
@@ -101,6 +114,10 @@ export default {
     flex-direction: column;
     align-items: center;
 
+    a {
+      text-decoration: none;
+    }
+
     .nav__tab {
       display: flex;
       align-items: center;
@@ -117,11 +134,11 @@ export default {
       }
 
       &--active {
-        background: $blue-overlay;
+        background: $color-green;
         color: $white;
 
         &:hover {
-          background: $blue-overlay-2;
+          background: $color-green-2;
         }
       }
     }

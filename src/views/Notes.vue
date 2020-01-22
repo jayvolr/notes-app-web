@@ -1,16 +1,21 @@
 <template>
-  <div class="notes" :style="style">
-    <NoteCard :note="note" :id="note.id" :rowSize="rowSize" :noteWidth="noteWidth" v-for="note in notes" :key="note.id" />
+  <div>
+    <NewNote />
+    <div ref="notes" class="notes">
+      <NoteCard :note="note" :id="note.id" :rowSize="rowSize" :noteWidth="noteWidth" v-for="note in notes" :key="note.id" :left="left" />
+    </div>
   </div>
 </template>
 
 <script>
 import NoteCard from '@/components/NoteCard';
+import NewNote from "@/components/NewNote";
 
 export default {
   name: 'Notes',
   components: {
     NoteCard,
+    NewNote,
   },
   data() {
     return {
@@ -26,17 +31,20 @@ export default {
     },
     rowSize() {
       this.recompute;
-      if (!this.viewElem) return null;
-      return Math.floor(this.viewElem.clientWidth / this.noteWidth);
+      if (!this.notesElem) return null;
+      return Math.floor(this.notesElem.clientWidth / (this.noteWidth + 14));
     },
-    style() {
-      const notesContainerWidth = this.rowSize * this.noteWidth + (14 * this.rowSize);
-      return `width: ${notesContainerWidth}px`;
+    left() {
+      if (!this.notesElem) return null;
+      const leftoverSpace = (this.notesElem.clientWidth / (this.noteWidth + 14)) - this.rowSize;
+      const left = ((this.noteWidth + 14) * leftoverSpace) / 2;
+      return left;
+      // return '';
     },
   },
   mounted() {
     this.$nextTick(() => {
-      this.notesElem = this.$el;
+      this.notesElem = this.$refs.notes;
       this.viewElem = this.$el.parentElement;
       this.viewElem.addEventListener('transitionend', () => {
         console.log('forcing notes recompute'); //eslint-disable-line
@@ -50,8 +58,9 @@ export default {
 <style lang="scss" scoped>
   .notes {
     margin: auto;
-    padding: 30px 0;
+    padding: 60px 0 30px 0;
     position: relative;
     display: block;
+    max-width: 1500px; 
   }
 </style>

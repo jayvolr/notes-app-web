@@ -8,7 +8,7 @@
 <script>
 export default {
   name: 'NoteCard',
-  props: ['note', 'id', 'rowSize'],
+  props: ['note', 'id', 'rowSize', 'left'],
   data() {
     return {
       noteElem: null,
@@ -20,8 +20,9 @@ export default {
   computed: {
     translateX() {
       this.recompute;
-      if (this.posInRow === 1 || !this.noteElem) return 0;
-      return this.noteWidth * (this.posInRow - 1) + this.margin*(this.posInRow - 1);
+      if (this.posInRow === 1 || !this.noteElem) return this.left || 0;
+      const translate = this.noteWidth * (this.posInRow - 1) + this.margin*(this.posInRow - 1);
+      return this.left ? translate + this.left : translate;
     },
     translateY() {
       this.recompute;

@@ -32,8 +32,8 @@ body {
   font-family: Roboto, Arial, sans-serif;
   color: $white;
   background: $black;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   position: absolute;
   flex-flow: row wrap;
   user-select: none;
