@@ -32,7 +32,7 @@ export default {
     rowSize() {
       this.recompute;
       if (!this.notesElem) return null;
-      return Math.floor(this.notesElem.clientWidth / (this.noteWidth + 14));
+      return Math.floor(this.notesElem.clientWidth / (this.noteWidth + 14)) || 1;
     },
     left() {
       if (!this.notesElem) return null;
