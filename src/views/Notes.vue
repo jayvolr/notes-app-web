@@ -46,7 +46,6 @@ export default {
       this.viewElem = this.$el.parentElement;
 
       const forceRecompute = () => {
-        console.log('forcing notes recompute'); //eslint-disable-line
         this.recompute++;
       }
 

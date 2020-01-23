@@ -27,13 +27,13 @@ export default {
   .NewNote-button {
     background: $color-green;
     border-radius: 100%;
-    border: 1px solid $black-3;
+    border: none;
     height: 60px;
     width: 60px;
     transition: all 200ms;
     position: fixed;
-    bottom: 50px;
-    right: 50px;
+    bottom: 30px;
+    right: 40px;
     text-align: center;
     cursor: pointer;
     z-index: 1;

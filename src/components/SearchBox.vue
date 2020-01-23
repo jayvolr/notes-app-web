@@ -37,7 +37,7 @@ export default {
 
 <style lang="scss" scoped>
   .search-box {
-    width: -webkit-fill-available;
+    width: stretch;
     background: $black-2;
     border-radius: 7px;
     border: 1px solid $black-3;
@@ -54,19 +54,19 @@ export default {
   }
 
   .search-box__form {
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: stretch;
+    width: stretch;
     position: relative;
     display: flex;
     align-items: center;
   }
 
   #search-box__input {
-    width: -webkit-fill-available;
+    width: stretch;
     background: transparent;
     padding: 7px 8px;
     margin-left: 7px;
-    height: -webkit-fill-available;
+    height: stretch;
     position: absolute;
     border: none;
     color: $white-2;

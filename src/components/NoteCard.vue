@@ -1,5 +1,5 @@
 <template>
-  <div :class="`note-card note-card--${id}`" :style="style" @click="click">
+  <div :class="`note-card note-card--${id}`" :style="style" @click="click" :data-y-pos="translateY">
     <div class="note-card__title">{{ note.title }}</div>
     <div class="note-card__body">{{ note.body }}</div>
   </div>
@@ -27,7 +27,7 @@ export default {
     translateY() {
       this.recompute;
       if (this.whichRow === 1 || !this.noteAbove) return 0;
-      return this.noteAbove.clientHeight + this.margin;
+      return Number(this.noteAbove.dataset.yPos) + this.noteAbove.clientHeight + this.margin;
     },
     noteIndex() {
       this.recompute;
@@ -50,7 +50,6 @@ export default {
     style() {
       this.recompute;
       return `transform: translate(${this.translateX}px, ${this.translateY}px); width: ${this.noteWidth - 42}px`;
-      // return '';
     },
     noteAbove() {
       this.recompute;
@@ -70,11 +69,6 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.noteElem = this.$el;
-      const viewContainer = document.querySelector('.view-container');
-      viewContainer.addEventListener('transitionend', () => {
-        console.log('forcing recompute'); //eslint-disable-line
-        this.recompute++;
-      });
     });
   }
 }

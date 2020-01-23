@@ -107,7 +107,7 @@ export default {
 
   &__tabs {
     font-weight: 500;
-    width: -webkit-fill-available;
+    width: stretch;
     position: relative;
     color: $white-2;
     display: flex;
