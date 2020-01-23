@@ -36,7 +36,7 @@ export default {
       if (icons[this.name]) {
         return icons[this.name];
       } else {
-        console.error("Name of icon is not correct");
+        console.error("Name of icon is not correct"); // eslint-disable-line
         return undefined;
       }
     }
