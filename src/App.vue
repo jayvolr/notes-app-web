@@ -43,7 +43,7 @@ body {
   margin-left: 316px;
   transition: margin 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   &--full {
@@ -52,6 +52,7 @@ body {
 }
 
 * {
+  // For Chromium only
   &::-webkit-scrollbar {
     height: 8px;
     width: 8px;
@@ -59,8 +60,8 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.23);
-    // border-radius: 10px;
+    background: rgba(255, 255, 255, 0.068);
+    border-radius: 10px;
   }
 
   &::-webkit-scrollbar-corner, &::-webkit-resizer {

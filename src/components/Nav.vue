@@ -104,7 +104,7 @@ export default {
   align-items: center;
   position: fixed;
   background: transparent;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: calc(100% - 60px);
 
   &::-webkit-scrollbar-thumb {
@@ -113,7 +113,7 @@ export default {
 
   &:hover {
     &::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.23);
+      background: rgba(255, 255, 255, 0.068);
     }
   }
 
