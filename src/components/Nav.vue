@@ -104,6 +104,18 @@ export default {
   align-items: center;
   position: fixed;
   background: transparent;
+  overflow-y: scroll;
+  max-height: calc(100% - 60px);
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.23);
+    }
+  }
 
   &__tabs {
     font-weight: 500;
