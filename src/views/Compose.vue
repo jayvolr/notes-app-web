@@ -2,7 +2,9 @@
   <div>
     <NewNote />
     <div class="compose">
-      <textarea name="compose" id="compose-area" cols="5" rows="50" placeholder="New note..."></textarea>
+      <input v-model="title" type="text" id="title" placeholder="Title" />
+      <textarea v-model="body" ref="body" id="body" placeholder="Start writing a new note..."></textarea>
+      <button @click="saveNote">save</button>
     </div>
   </div>
 </template>
@@ -11,16 +13,30 @@
 import NewNote from "@/components/NewNote";
 
 export default {
-  name: 'Notes',
+  name: 'Compose',
   components: {
     NewNote,
   },
   data() {
     return {
+      title: '',
+      body: ''
     }
   },
-  computed: {
-
+  methods: {
+    saveNote() {
+      this.$store.commit('addNote', {
+        "id": 20,
+        "title": this.title,
+        "body": this.body,
+        "tags": [],
+        "creation_date": Date.now(),
+        "edited_date": Date.now()
+      });
+    }
+  },
+  mounted() {
+    this.$refs.body.focus();
   },
 }
 </script>
@@ -31,15 +47,24 @@ export default {
     position: relative;
     display: block;
 
-    #compose-area {
+    #body,
+    #title {
       background: $black;
       color: $white-2;
       width: 100%;
-      height: calc(100% - 136px);
       outline: none;
       border: none;
-      padding: 68px;
       font-size: 16px;
+    } 
+
+    #title {
+      padding: 68px 68px 10px 68px;
+      font-size: 26px;
+    }
+
+    #body {
+      padding: 10px 68px 68px 68px;
+      height: calc(100% - 136px);
     }
   }
 </style>

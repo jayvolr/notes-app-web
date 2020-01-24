@@ -83,6 +83,9 @@ export default new Vuex.Store({
   mutations: {
     toggleNav(state) {
       state.navIsOpen = !state.navIsOpen;
+    },
+    addNote(state, newNote) {
+      state.notes.push(newNote);
     }
   },
   actions: {
