@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="compose">
     <NewNote />
-    <div class="compose">
+    <div class="compose__inputs">
       <input v-model="title" type="text" id="title" placeholder="Title" />
       <textarea v-model="body" ref="body" id="body" placeholder="Start writing a new note..."></textarea>
       <button @click="saveNote">save</button>
@@ -42,7 +42,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .compose {
+  .compose,
+  .compose__inputs {
+    height: 100%;
+  }
+
+  .compose__inputs {
     margin: auto;
     position: relative;
     display: block;
@@ -58,7 +63,8 @@ export default {
     } 
 
     #title {
-      padding: 68px 68px 10px 68px;
+      padding: 10px 68px 10px 68px;
+      margin-top: 58px;
       font-size: 26px;
     }
 

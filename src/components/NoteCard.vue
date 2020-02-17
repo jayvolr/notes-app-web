@@ -14,7 +14,7 @@ export default {
       noteElem: null,
       recompute: 0,
       noteWidth: 240,
-      margin: 14
+      margin: 16
     }
   },
   computed: {
@@ -86,7 +86,7 @@ export default {
     font-size: .875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    margin: 7px;
+    margin: 8px;
     padding: 10px 20px;
     flex-flow: column nowrap;
     border: 1px solid $black-3;
