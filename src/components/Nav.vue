@@ -25,10 +25,10 @@
           <Icon name="tag" size="26" color="white-2"/>
           Work
         </div>
-        <div class="nav__tab">
+        <router-link to="/tag/dev" class="nav__tab">
           <Icon name="tag" size="26" color="white-2"/>
           Dev
-        </div>
+        </router-link>
         <Divider />
         <div class="nav__tab">
           <Icon name="archive" size="26" color="white-2"/>
@@ -125,10 +125,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    a {
-      text-decoration: none;
-    }
 
     .nav__tab {
       display: flex;

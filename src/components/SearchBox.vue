@@ -2,7 +2,7 @@
   <div class="search-box">
     <Icon name="search" :color="iconFill" size="24" />
     <form class="search-box__form" method="get">
-      <input @focus="focusSearch" @blur="blurSearch" placeholder="Search" type="text" name="Search" id="search-box__input">
+      <input @focus="focusSearch" @blur="blurSearch" placeholder="Search" type="text" name="Search" id="search-box__input" autocomplete="off">
     </form>
   </div>
 </template>

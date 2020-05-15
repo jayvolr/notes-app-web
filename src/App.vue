@@ -28,6 +28,12 @@ body {
   overflow: hidden;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 #app-mount {
   font-family: Roboto, Arial, sans-serif;
   color: $white;

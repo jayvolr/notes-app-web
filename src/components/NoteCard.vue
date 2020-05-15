@@ -1,5 +1,5 @@
 <template>
-  <div :class="`note-card note-card--${id}`" :style="style" @click="click" :data-y-pos="translateY">
+  <div :class="`note-card note-card--${id}`" :style="style" :data-y-pos="translateY">
     <div class="note-card__title">{{ note.title }}</div>
     <div class="note-card__body">{{ note.body }}</div>
   </div>
@@ -60,11 +60,6 @@ export default {
       }
       return result;
     },
-  },
-  methods: {
-    click() {
-      console.log(this.noteAbove); //eslint-disable-line
-    }
   },
   mounted() {
     this.$nextTick(() => {

@@ -2,8 +2,8 @@
   <div class="compose">
     <NewNote />
     <div class="compose__inputs">
-      <input v-model="title" type="text" id="title" placeholder="Title" />
-      <textarea v-model="body" ref="body" id="body" placeholder="Start writing a new note..."></textarea>
+      <input v-model="title" type="text" id="title" placeholder="Title" autocomplete="off" />
+      <textarea v-model="body" ref="body" id="body" placeholder="Start writing a new note..." autocomplete="off"></textarea>
       <button @click="saveNote">save</button>
     </div>
   </div>
@@ -33,6 +33,8 @@ export default {
         "creation_date": Date.now(),
         "edited_date": Date.now()
       });
+
+      this.$router.push('/');
     }
   },
   mounted() {
@@ -71,6 +73,13 @@ export default {
     #body {
       padding: 10px 68px 68px 68px;
       height: calc(100% - 136px);
+      position: relative;
+    }
+
+    button {
+      position: absolute;
+      left: 70px;
+      top: 20px;
     }
   }
 </style>
